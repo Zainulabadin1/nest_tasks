@@ -26,7 +26,6 @@ export class Product extends Document{
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
     user_id: mongoose.Types.ObjectId 
-    //[{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 
     @Prop({default: "unapproved"})
     approved: string
