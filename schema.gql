@@ -1,0 +1,110 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserDto {
+  _id: String!
+  firstName: String!
+  lastName: String!
+  dob: DateTime!
+  email: String!
+  password: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ProductDto {
+  _id: String!
+  name: String!
+  price: Float!
+  product_code: String!
+  quantity: Float!
+  expiry_date: DateTime!
+  user_id: String!
+}
+
+type AdminDto {
+  name: String!
+  email: String!
+  password: String!
+}
+
+type Query {
+  findAllProducts(input: ShowDataInput!): [ProductDto!]!
+  unapprovedProducts: [ProductDto!]!
+  admin(id: Int!): AdminDto!
+}
+
+input ShowDataInput {
+  _id: String!
+  choice: String!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): UserDto!
+  createProduct(input: CreateProductInput!): ProductDto!
+  updateUser(updateUserInput: UpdateUserInput!): UserDto!
+  removeUser(id: Int!): UserDto!
+  createAdmin(createAdminInput: CreateAdminInput!): AdminDto!
+  updatePrice(input: UpdateProductInput!): ProductDto!
+  approveProducts(ids: [String!]!): [ProductDto!]!
+  updateAdmin(updateAdminInput: UpdateAdminInput!): AdminDto!
+  removeAdmin(id: Int!): AdminDto!
+}
+
+input CreateUserInput {
+  firstName: String!
+  lastName: String!
+  dob: DateTime!
+  email: String!
+  password: String!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Float!
+  product_code: String!
+  quantity: Float!
+  expiry_date: DateTime!
+  user_id: String!
+}
+
+input UpdateUserInput {
+  firstName: String!
+  lastName: String!
+  dob: DateTime!
+  email: String!
+  password: String!
+  _id: String!
+  age: Float!
+  status: String!
+  is_block: Boolean!
+  gender: String!
+  nationality: String!
+}
+
+input CreateAdminInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateProductInput {
+  name: String
+  price: Float!
+  product_code: String
+  quantity: Float
+  expiry_date: DateTime
+  user_id: String
+  _id: String!
+}
+
+input UpdateAdminInput {
+  name: String
+  email: String
+  password: String
+  id: Int!
+}
