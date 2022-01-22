@@ -1,5 +1,6 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Int, Field, ID } from '@nestjs/graphql';
 import { } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 
 
@@ -21,8 +22,8 @@ export class CreateProductInput {
     @Field()
     expiry_date: Date
 
-    @Field()
-    user_id: string
+    @Field(() => ID)
+    user_id: ObjectId
 
 }
 

@@ -69,7 +69,7 @@ input CreateProductInput {
   product_code: String!
   quantity: Float!
   expiry_date: DateTime!
-  user_id: String!
+  user_id: ID!
 }
 
 input UpdateUserInput {
@@ -98,7 +98,7 @@ input UpdateProductInput {
   product_code: String
   quantity: Float
   expiry_date: DateTime
-  user_id: String
+  user_id: ID
   _id: String!
 }
 
