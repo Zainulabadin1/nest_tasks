@@ -1,6 +1,7 @@
 //Schema for mongodb
 
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
+import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
 const uniqueValidator = require('mongoose-unique-validator')
 
@@ -26,7 +27,7 @@ export class Product extends Document{
     @Prop({
         type: String
       })
-    user_id: string
+    user_id: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 
     @Prop({default: "unapproved"})
     approved: string

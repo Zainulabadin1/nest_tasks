@@ -47,7 +47,6 @@ export class AdminService {
 
         console.log("after approval  : " ,  productForApproval[i].approved )
         productForApproval[i].save();
-        console.log("ok")
       }
       
      return productForApproval;
