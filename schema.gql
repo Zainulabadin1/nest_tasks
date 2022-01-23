@@ -41,6 +41,7 @@ type Query {
 input ShowDataInput {
   _id: String!
   choice: String!
+  price: Float!
 }
 
 type Mutation {

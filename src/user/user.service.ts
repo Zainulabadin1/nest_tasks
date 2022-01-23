@@ -29,13 +29,12 @@ export class UserService {
   
   
   async findAll(input: ShowDataInput) : Promise<Product[]> {
-    //const usersearch = await this.productModel.findById({user_id : input._id});
-    if(input.choice === 'personal')
+    if(input.choice === 'personal'&& input.price>= 50)
     {
     return this.productModel.find({user_id : { $eq : input._id}}).exec();
     } 
     
-    else if(input.choice === 'others' ){
+    else if(input.choice === 'others' && input.price>= 50 ){
       return this.productModel.find({user_id : { $ne : input._id}})
     }
   }

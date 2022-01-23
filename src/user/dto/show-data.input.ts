@@ -10,6 +10,9 @@ export class ShowDataInput {
 
  @Field()
  choice: string
+
+ @Field()
+ price: number
  
 
 }
