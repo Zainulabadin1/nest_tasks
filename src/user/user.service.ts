@@ -29,13 +29,14 @@ export class UserService {
 
 
   async findAll(input: ShowDataInput): Promise<Product[]> {
-    var Today = new Date().setHours(0, 0, 0, 0);
+    var Today = new Date().setUTCHours(0, 0, 0, 0);
   
     if (input.choice === 'personal') {
       return this.productModel.find({
         price: { $gte: 50 },
-         created_time: { $eq: Today },
-        approved: { $in: "approved" },
+        $or:[
+         {created_time: { $eq: Today }},
+        {approved: { $in: "approved" }}],
         user_id: { $eq: input._id }
       })
         .exec();
@@ -44,8 +45,9 @@ export class UserService {
     else if (input.choice === 'others') {
       return this.productModel.find({
         price: { $gte: 50 },
-        created_time: { $eq: Today },
-        approved: { $in: "approved" },
+        $or:[
+        {created_time: { $eq: Today }},
+        {approved: { $in: "approved" }}],
         user_id: { $ne: input._id }
       })
         .exec();

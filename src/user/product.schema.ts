@@ -30,7 +30,7 @@ export class Product extends Document{
     @Prop({default: "unapproved"})
     approved: string
 
-    @Prop({default: new Date().setHours(0, 0, 0, 0)})
+    @Prop({default: new Date().setUTCHours(0, 0, 0, 0)})
     created_time: Date
 }
 
