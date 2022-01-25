@@ -29,6 +29,9 @@ export class Product extends Document{
 
     @Prop({default: "unapproved"})
     approved: string
+
+    @Prop({default: new Date().setHours(0, 0, 0, 0)})
+    created_time: Date
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

@@ -25,6 +25,9 @@ export class CreateProductInput {
     @Field(() => ID)
     user_id: ObjectId
 
+    @Field({nullable:true})
+    created_time: Date
+
 }
 
 

@@ -24,6 +24,7 @@ type ProductDto {
   quantity: Float!
   expiry_date: DateTime!
   user_id: String!
+  created_time: DateTime
 }
 
 type AdminDto {
@@ -41,7 +42,8 @@ type Query {
 input ShowDataInput {
   _id: String!
   choice: String!
-  price: Float!
+  price: Float
+  created_time: DateTime
 }
 
 type Mutation {
@@ -71,6 +73,7 @@ input CreateProductInput {
   quantity: Float!
   expiry_date: DateTime!
   user_id: ID!
+  created_time: DateTime
 }
 
 input UpdateUserInput {
@@ -100,6 +103,7 @@ input UpdateProductInput {
   quantity: Float
   expiry_date: DateTime
   user_id: ID
+  created_time: DateTime
   _id: String!
 }
 

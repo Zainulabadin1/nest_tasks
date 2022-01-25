@@ -22,4 +22,7 @@ export class ProductDto{
 
     @Field()
     user_id: string
+
+    @Field({nullable:true})
+    created_time: Date
 }

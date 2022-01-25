@@ -11,8 +11,10 @@ export class ShowDataInput {
  @Field()
  choice: string
 
- @Field()
+ @Field({nullable:true})
  price: number
  
+ @Field({nullable:true})
+ created_time: Date
 
 }
