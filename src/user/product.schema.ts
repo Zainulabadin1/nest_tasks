@@ -25,7 +25,7 @@ export class Product extends Document{
     expiry_date: Date
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-    user_id: mongoose.Types.ObjectId 
+    user_id: mongoose.Schema.Types.ObjectId 
 
     @Prop({default: "unapproved"})
     approved: string

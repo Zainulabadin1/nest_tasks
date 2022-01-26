@@ -30,29 +30,50 @@ export class UserService {
 
   async findAll(input: ShowDataInput): Promise<Product[]> {
     var Today = new Date().setUTCHours(0, 0, 0, 0);
-  
-    if (input.choice === 'personal') {
-      return this.productModel.find({
-        price: { $gte: 50 },
-        $or:[
-         {created_time: { $eq: Today }},
-        {approved: { $in: "approved" }}],
-        user_id: { $eq: input._id }
-      })
-        .exec();
+
+    if (input.choice === 'personal')
+      return await this.personalProducts(input);
+
+    else if (input.choice === 'others')
+      return await this.otherProducts(input);
+
+  } 
+
+  async personalProducts(input) {
+    var Today = new Date().setUTCHours(0, 0, 0, 0);
+    var condition = {
+      price: { $gte: 50 },
+      $or: [
+        { created_time: { $eq: Today } },
+        { approved: { $in: "approved" } }],
+      user_id: { $eq: input._id }
+    }
+    return await this.productModel.find(
+      condition
+    )
+      .exec();
+  }
+
+
+
+
+  async otherProducts(input) {
+    var Today = new Date().setUTCHours(0, 0, 0, 0);
+
+    var conditions = {
+      price: { $gte: 50 },
+      $or: [
+        { created_time: { $eq: Today } },
+        { approved: { $eq: "approved" } }],
+      user_id: { $ne: input._id }
     }
 
-    else if (input.choice === 'others') {
-      return this.productModel.find({
-        price: { $gte: 50 },
-        $or:[
-        {created_time: { $eq: Today }},
-        {approved: { $in: "approved" }}],
-        user_id: { $ne: input._id }
-      })
-        .exec();
-    }
+    return await this.productModel.find(
+      conditions
+    )
+      .exec();
   }
+
 
 
   findOne(id: number) {

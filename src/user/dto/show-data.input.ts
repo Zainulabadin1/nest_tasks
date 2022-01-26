@@ -1,12 +1,13 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Int, Field, ID } from '@nestjs/graphql';
+import { ObjectId } from 'mongoose';
 
 
 
 @InputType()
 export class ShowDataInput {
  
- @Field()
- _id: string
+ @Field(()=>ID)
+ _id:  ObjectId
 
  @Field()
  choice: string

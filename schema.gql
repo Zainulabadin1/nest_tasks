@@ -40,7 +40,7 @@ type Query {
 }
 
 input ShowDataInput {
-  _id: String!
+  _id: ID!
   choice: String!
   price: Float
   created_time: DateTime
